@@ -1,0 +1,18 @@
+</main>
+<section class="newsletter" aria-labelledby="newsletter-title">
+  <div class="newsletter__inner wrap"><div class="newsletter__content"><p class="eyebrow"><?php esc_html_e('Notes from the road', 'travel-riddle'); ?></p><h2 id="newsletter-title"><?php esc_html_e('A world of stories, waiting in your inbox.', 'travel-riddle'); ?></h2><p><?php esc_html_e('Fresh destinations, thoughtful travel ideas and memorable stories—shared occasionally, never noisily.', 'travel-riddle'); ?></p><form class="newsletter-form" action="#" method="post"><label class="screen-reader-text" for="travel-email"><?php esc_html_e('Email address', 'travel-riddle'); ?></label><input id="travel-email" type="email" name="email" placeholder="Enter your email address" required><button type="submit"><?php esc_html_e('Join the journey', 'travel-riddle'); ?></button></form><small><?php esc_html_e('No clutter. Just inspiration worth opening.', 'travel-riddle'); ?></small></div><div class="newsletter__image" role="img" aria-label="<?php esc_attr_e('A peaceful Mediterranean coastline', 'travel-riddle'); ?>"><span><?php esc_html_e('The next story starts here', 'travel-riddle'); ?></span></div></div>
+</section>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>" alt="Travel Riddle"><p><?php esc_html_e('Thoughtful travel stories for curious people. Every destination has a story. Every story has a mystery.', 'travel-riddle'); ?></p></div>
+      <div><p class="footer-title"><?php esc_html_e('Explore', 'travel-riddle'); ?></p><ul class="footer-links"><li><a href="<?php echo esc_url(home_url('/destinations/')); ?>"><?php esc_html_e('Destinations', 'travel-riddle'); ?></a></li><li><a href="<?php echo esc_url(home_url('/stories/')); ?>"><?php esc_html_e('Travel stories', 'travel-riddle'); ?></a></li><li><a href="<?php echo esc_url(home_url('/about/')); ?>"><?php esc_html_e('About us', 'travel-riddle'); ?></a></li><li><a href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Contact', 'travel-riddle'); ?></a></li></ul></div>
+      <div><p class="footer-title"><?php esc_html_e('Discover', 'travel-riddle'); ?></p><ul class="footer-links"><li><a href="<?php echo esc_url(home_url('/category/travel-guides/')); ?>"><?php esc_html_e('Travel guides', 'travel-riddle'); ?></a></li><li><a href="<?php echo esc_url(home_url('/category/culture/')); ?>"><?php esc_html_e('Culture', 'travel-riddle'); ?></a></li><li><a href="<?php echo esc_url(home_url('/category/food/')); ?>"><?php esc_html_e('Food and local life', 'travel-riddle'); ?></a></li><li><a href="<?php echo esc_url(home_url('/category/adventure/')); ?>"><?php esc_html_e('Adventure', 'travel-riddle'); ?></a></li></ul></div>
+      <div><p class="footer-title"><?php esc_html_e('Follow', 'travel-riddle'); ?></p><ul class="footer-links"><li><a href="#">Instagram ↗</a></li><li><a href="#">YouTube ↗</a></li><li><a href="#">Pinterest ↗</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© <?php echo esc_html(wp_date('Y')); ?> Travel Riddle · <?php esc_html_e('Made for the curious.', 'travel-riddle'); ?></span><nav aria-label="<?php esc_attr_e('Legal navigation', 'travel-riddle'); ?>"><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>"><?php esc_html_e('Privacy', 'travel-riddle'); ?></a><a href="<?php echo esc_url(home_url('/disclaimer/')); ?>"><?php esc_html_e('Disclaimer', 'travel-riddle'); ?></a><a href="<?php echo esc_url(home_url('/editorial-policy/')); ?>"><?php esc_html_e('Editorial policy', 'travel-riddle'); ?></a></nav></div>
+  </div>
+</footer>
+<?php wp_footer(); ?>
+</body>
+</html>
