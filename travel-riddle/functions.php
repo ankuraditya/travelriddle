@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 
-define('TRAVEL_RIDDLE_VERSION', '1.2.9');
+define('TRAVEL_RIDDLE_VERSION', '1.3.0');
 
 function travel_riddle_setup(): void {
     load_theme_textdomain('travel-riddle', get_template_directory() . '/languages');
@@ -54,7 +54,11 @@ function travel_riddle_reading_time(int $post_id = 0): int {
 }
 
 function travel_riddle_excerpt(int $words = 24): string {
-    return wp_trim_words(get_the_excerpt(), $words, '…');
+    $excerpt = trim(get_the_excerpt());
+    if (str_contains($excerpt, 'class=') || strlen($excerpt) < 24) {
+        $excerpt = wp_strip_all_tags(get_post_field('post_content', get_the_ID()));
+    }
+    return wp_trim_words($excerpt, $words, '…');
 }
 
 function travel_riddle_seo_description(): string {
