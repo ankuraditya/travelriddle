@@ -3,7 +3,7 @@ Theme Name: Travel Riddle
 Theme URI: https://travelriddle.com/
 Author: Travel Riddle
 Description: A cinematic, editorial WordPress theme for meaningful travel stories.
-Version: 1.4.1
+Version: 1.4.2
 Requires at least: 6.5
 Requires PHP: 8.1
 Text Domain: travel-riddle
@@ -223,17 +223,40 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
 .story-related__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
 .story-related__card { min-width: 0; background: white; box-shadow: 0 16px 44px rgba(21,38,31,.08); }
 .story-related__image { display: block; overflow: hidden; }
-.story-related__image img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform .5s ease; }
+.story-related__image img { width: 100%; aspect-ratio: 16/6.6; object-fit: cover; transition: transform .5s ease; }
 .story-related__card:hover .story-related__image img { transform: scale(1.035); }
 .story-related__card > div { padding: 24px; }
 .story-related__card h3 { margin-bottom: 22px; font-size: clamp(1.4rem,2vw,1.9rem); }
 .story-related__card h3 a { text-decoration: none; }
+
+/* Stories archive */
+.stories-archive { position: relative; overflow: hidden; background: #f7f4ed; }
+.stories-archive::before { position: absolute; top: 38px; right: -180px; width: 620px; height: 290px; content: ''; opacity: .16; background: url('assets/images/story-route-pattern.svg') center/contain no-repeat; pointer-events: none; }
+.stories-archive .section { padding-block: clamp(68px,8vw,108px); }
+.stories-archive__intro { position: relative; z-index: 1; display: grid; max-width: 1100px; margin: 0 auto 50px; grid-template-columns: minmax(280px,.9fr) 1.1fr; gap: 14px clamp(40px,7vw,96px); align-items: end; }
+.stories-archive__intro .eyebrow { grid-column: 1/-1; }
+.stories-archive__intro h2 { font-size: clamp(2.15rem,3.6vw,3.45rem); }
+.stories-archive__intro > p:last-child { max-width: 470px; margin: 0 0 5px; color: var(--ink-soft); }
+.story-index-list { position: relative; z-index: 1; display: grid; max-width: 1100px; margin: 0 auto; gap: 22px; }
+.story-index-card { display: grid; min-height: 245px; overflow: hidden; grid-template-columns: minmax(260px,35%) 1fr; background: white; border: 1px solid rgba(23,33,29,.09); box-shadow: 0 15px 42px rgba(18,35,28,.07); }
+.story-index-card:nth-child(even) { grid-template-columns: 1fr minmax(260px,35%); }
+.story-index-card:nth-child(even) .story-index-card__image { order: 2; }
+.story-index-card__image { display: block; min-height: 245px; overflow: hidden; }
+.story-index-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease; }
+.story-index-card:hover .story-index-card__image img { transform: scale(1.035); }
+.story-index-card__body { display: flex; padding: clamp(25px,4vw,44px); flex-direction: column; justify-content: center; align-items: flex-start; }
+.story-index-card__body h2 { margin-bottom: 14px; font-size: clamp(1.75rem,3vw,2.65rem); }
+.story-index-card__body h2 a { text-decoration: none; }
+.story-index-card__body > p:not(.eyebrow) { max-width: 610px; margin: 0; color: var(--ink-soft); }
+.story-index-card__body .text-link { margin-top: 20px; }
+.story-index-list .navigation { margin-top: 25px; }
 @media (max-width: 900px) {
   .story-hero { min-height: 320px; padding: 52px 0 96px; background-position: 62% center; }
   .story-breadcrumb { margin-bottom: 34px; }
   .story-feature { margin-top: -46px; }
   .story-layout { grid-template-columns: 170px minmax(0,1fr); gap: 44px; }
   .story-related__grid { grid-template-columns: repeat(2,1fr); }
+  .stories-archive__intro { grid-template-columns: 1fr; gap: 12px; }
 }
 @media (max-width: 620px) {
   .story-hero { min-height: 0; padding: 38px 0 76px; background-position: 68% center; }
@@ -261,6 +284,17 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
   .story-related__image img { height: 100%; aspect-ratio: auto; }
   .story-related__card > div { padding: 18px; }
   .story-related__card h3 { margin-bottom: 14px; font-size: 1.35rem; }
+  .stories-archive .section { padding-block: 54px 72px; }
+  .stories-archive__intro { margin-bottom: 32px; }
+  .story-index-list { gap: 14px; }
+  .story-index-card,.story-index-card:nth-child(even) { min-height: 175px; grid-template-columns: 37% 1fr; }
+  .story-index-card:nth-child(even) .story-index-card__image { order: 0; }
+  .story-index-card__image { min-height: 175px; }
+  .story-index-card__body { padding: 18px 16px; }
+  .story-index-card__body .eyebrow { font-size: .55rem; letter-spacing: .1em; }
+  .story-index-card__body h2 { margin-bottom: 12px; font-size: clamp(1.25rem,6vw,1.55rem); }
+  .story-index-card__body > p:not(.eyebrow) { display: none; }
+  .story-index-card__body .text-link { margin-top: 4px; font-size: .6rem; }
 }
 .post-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .post-list article { background: white; }
