@@ -9,7 +9,6 @@ while (have_posts()) :
   <div class="wrap">
     <p class="eyebrow"><?php echo 'about' === $slug ? esc_html__('Our story', 'travel-riddle') : ('contact' === $slug ? esc_html__('Start a conversation', 'travel-riddle') : ('destinations' === $slug ? esc_html__('Choose your horizon', 'travel-riddle') : esc_html__('Travel Riddle', 'travel-riddle'))); ?></p>
     <h1><?php the_title(); ?></h1>
-    <?php if ('about' === $slug) : ?><p class="page-hero__intro"><?php esc_html_e('Travel gives every journey a soul—and every destination a story worth understanding.', 'travel-riddle'); ?></p><?php endif; ?>
     <?php if ('contact' === $slug) : ?><p class="page-hero__intro"><?php esc_html_e('Ideas, questions and stories from the road are always welcome.', 'travel-riddle'); ?></p><?php endif; ?>
     <?php if ('destinations' === $slug) : ?><p class="page-hero__intro"><?php esc_html_e('Explore wild landscapes, living cities and coastlines that invite you to stay a little longer.', 'travel-riddle'); ?></p><?php endif; ?>
   </div>
@@ -33,10 +32,9 @@ while (have_posts()) :
 <?php elseif ('about' === $slug) : ?>
 <main class="inner-page about-page">
   <section class="section about-story"><div class="wrap about-story__grid">
-    <aside class="about-story__aside"><img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/intro-journey.png'); ?>" alt="<?php esc_attr_e('Traveler overlooking a mountain landscape', 'travel-riddle'); ?>"><p><?php esc_html_e('“Words and pictures may inspire a journey, but travel gives that journey a soul.”', 'travel-riddle'); ?></p></aside>
+    <aside class="about-story__aside about-story__aside--founder"><img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/founder.png'); ?>" alt="<?php esc_attr_e('Founder of Travel Riddle', 'travel-riddle'); ?>"></aside>
     <article class="about-story__content"><?php the_content(); ?></article>
   </div></section>
-  <section class="founder-feature"><div class="wrap founder-feature__grid"><div class="founder-feature__portrait"><img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/founder.png'); ?>" alt="<?php esc_attr_e('MD. Hassan, founder of Travel Riddle', 'travel-riddle'); ?>"></div><div><p class="eyebrow"><?php esc_html_e('Meet the founder', 'travel-riddle'); ?></p><h2>MD. HASSAN</h2><p class="founder-feature__role"><?php esc_html_e('15+ years in the travel domain', 'travel-riddle'); ?></p><p><?php esc_html_e('His experience across destinations, traveler needs and the wider industry shapes Travel Riddle’s thoughtful, honest and practical editorial approach.', 'travel-riddle'); ?></p><a class="button" href="<?php echo esc_url(home_url('/stories/')); ?>"><?php esc_html_e('Read the latest stories', 'travel-riddle'); ?></a></div></div></section>
 </main>
 
 <?php elseif ('contact' === $slug) : ?>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" fill="none">
+  <g stroke="#E7BC7D">
+    <circle cx="210" cy="210" r="184" opacity=".22"/><circle cx="210" cy="210" r="145" opacity=".14"/><circle cx="210" cy="210" r="10" opacity=".36"/>
+    <path d="m210 35 18 157 157 18-157 18-18 157-18-157-157-18 157-18 18-157Z" opacity=".18"/>
+    <path d="m111 111 83 83m115 115-83-83m83-115-83 83m-115 115 83-83" opacity=".14"/>
+  </g>
+  <g fill="#F5E6D0" opacity=".27" font-family="Georgia,serif" font-size="23" text-anchor="middle"><text x="210" y="20">N</text><text x="210" y="416">S</text><text x="405" y="218">E</text><text x="15" y="218">W</text></g>
+</svg>

@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 
-define('TRAVEL_RIDDLE_VERSION', '1.1.1');
+define('TRAVEL_RIDDLE_VERSION', '1.2.9');
 
 function travel_riddle_setup(): void {
     load_theme_textdomain('travel-riddle', get_template_directory() . '/languages');
@@ -212,6 +212,15 @@ function travel_riddle_update_inner_pages(): void {
     update_option('travel_riddle_inner_pages_v2', current_time('mysql'));
 }
 add_action('admin_init', 'travel_riddle_update_inner_pages');
+
+function travel_riddle_apply_client_about_copy(): void {
+    if (get_option('travel_riddle_client_about_v3')) { return; }
+    $about = '<p class="intro-lead">At Travel Riddle, we believe nature was created for us to see, experience, appreciate, learn from, and perhaps even heal through. Every landscape, sunset, and unfamiliar street has something to show us—if we take the time to notice and appreciate it.</p><p>Words and pictures may inspire a journey, but travel gives that journey a soul.</p><p>There is something special about standing in a place you have only seen in photographs. Feeling the air, hearing the sounds, meeting the people, and experiencing the place yourself can create memories that pictures alone never can.</p><p>Travel does not ask your age, where you come from, or how much you have. The desire to explore is something we all share. And sometimes, the farther we travel from what is familiar, the closer we come to discovering who we truly are.</p><p><strong>Don\'t wait for the perfect time to travel. Make travel a part of your perfect life.</strong></p><p>At Travel Riddle, we don\'t simply tell you where to go. We help you understand why a place is worth visiting and whether it is right for you.</p><p>Through travel stories, ideas, insights, and inspiration, we hope to make your travel choices easier and your journeys more interesting and meaningful.</p><blockquote>“Sunsets are proof that endings can be beautiful.”</blockquote><p>If something we share inspires you to take a journey, discover a new place, see the world differently, or simply create a beautiful memory, then we have achieved something meaningful.</p><p>It would be both a privilege and a pleasure to know that Travel Riddle has made even the smallest difference in your life.</p>';
+    $page = get_page_by_path('about', OBJECT, 'page');
+    if ($page) { wp_update_post(['ID' => $page->ID, 'post_content' => $about]); }
+    update_option('travel_riddle_client_about_v3', current_time('mysql'));
+}
+add_action('admin_init', 'travel_riddle_apply_client_about_copy', 20);
 
 function travel_riddle_handle_contact(): void {
     $redirect = home_url('/contact/');

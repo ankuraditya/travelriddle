@@ -25,10 +25,17 @@
       video.classList.toggle('is-active', active);
       videoDots[i]?.classList.toggle('is-active', active);
       videoDots[i]?.setAttribute('aria-pressed', String(active));
-      if (active && !reducedMotion) video.play().catch(() => {}); else video.pause();
+      if (active) video.play().catch(() => {}); else video.pause();
     });
   };
   if (videos.length) {
+    const setHeroRatio = video => {
+      if (video.videoWidth && video.videoHeight) {
+        document.querySelector('.hero--editorial')?.style.setProperty('--travel-video-ratio', `${video.videoWidth} / ${video.videoHeight}`);
+      }
+    };
+    videos.forEach(video => video.addEventListener('loadedmetadata', () => setHeroRatio(video), { once: true }));
+    if (videos[0].readyState >= 1) setHeroRatio(videos[0]);
     videoDots.forEach(dot => dot.addEventListener('click', () => { showVideo(Number(dot.dataset.heroSlide)); restartVideos(); }));
     const restartVideos = () => { clearInterval(videoTimer); if (!reducedMotion) videoTimer = setInterval(() => showVideo(videoIndex + 1), 8000); };
     showVideo(0);
