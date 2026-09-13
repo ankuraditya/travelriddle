@@ -1,6 +1,7 @@
 <?php get_header(); while (have_posts()) : the_post();
 $categories = get_the_category();
 $category_names = wp_list_pluck($categories, 'name');
+$reading_time = travel_riddle_reading_time();
 $related = new WP_Query([
     'post_type' => 'post',
     'posts_per_page' => 3,
@@ -16,7 +17,7 @@ $related = new WP_Query([
     <div class="story-meta">
       <span><?php printf(esc_html__('By %s', 'travel-riddle'), esc_html(get_the_author())); ?></span>
       <time datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>"><?php echo esc_html(get_the_date()); ?></time>
-      <span><?php printf(esc_html__('%d min read', 'travel-riddle'), travel_riddle_reading_time()); ?></span>
+      <span><?php printf(esc_html__('%d min read', 'travel-riddle'), $reading_time); ?></span>
     </div>
   </div>
 </header>
@@ -34,7 +35,7 @@ $related = new WP_Query([
       <p class="story-rail__label"><?php esc_html_e('Field notes', 'travel-riddle'); ?></p>
       <dl>
         <div><dt><?php esc_html_e('Published', 'travel-riddle'); ?></dt><dd><time datetime="<?php echo esc_attr(get_the_date('Y-m-d')); ?>"><?php echo esc_html(get_the_date('M j, Y')); ?></time></dd></div>
-        <div><dt><?php esc_html_e('Reading time', 'travel-riddle'); ?></dt><dd><?php printf(esc_html__('%d minutes', 'travel-riddle'), travel_riddle_reading_time()); ?></dd></div>
+        <div><dt><?php esc_html_e('Reading time', 'travel-riddle'); ?></dt><dd><?php printf(esc_html(_n('%d minute', '%d minutes', $reading_time, 'travel-riddle')), $reading_time); ?></dd></div>
         <?php if ($categories) : ?><div><dt><?php esc_html_e('Journey', 'travel-riddle'); ?></dt><dd><?php foreach ($categories as $index => $category) : ?><?php echo $index ? ', ' : ''; ?><a href="<?php echo esc_url(get_category_link($category)); ?>"><?php echo esc_html($category->name); ?></a><?php endforeach; ?></dd></div><?php endif; ?>
       </dl>
       <a class="story-rail__back" href="<?php echo esc_url(home_url('/stories/')); ?>"><?php esc_html_e('All stories', 'travel-riddle'); ?></a>
