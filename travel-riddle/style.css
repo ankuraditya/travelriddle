@@ -3,7 +3,7 @@ Theme Name: Travel Riddle
 Theme URI: https://travelriddle.com/
 Author: Travel Riddle
 Description: A cinematic, editorial WordPress theme for meaningful travel stories.
-Version: 1.3.0
+Version: 1.3.1
 Requires at least: 6.5
 Requires PHP: 8.1
 Text Domain: travel-riddle
@@ -395,7 +395,7 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
 .about-story__aside--founder img { aspect-ratio: 4/5; object-position: center top; }
 .about-story__content h2 { display: none; }
 .about-story__content p { margin: 0 0 1.4em; }
-.about-story__content blockquote { margin: 36px 0; padding: 24px 0 24px 28px; font-size: clamp(1.5rem,2.6vw,2.25rem); }
+.about-story__content blockquote { max-width: 680px; margin: 24px 0 28px; padding: 12px 0 12px 20px; font-size: clamp(1.2rem,1.7vw,1.65rem); line-height: 1.4; }
 
 @media (max-width:900px) {
   .site-header__inner { display: grid; width: var(--wrap); min-height: 100px; grid-template-columns: auto 1fr auto; }
