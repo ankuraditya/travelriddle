@@ -16,15 +16,37 @@ while (have_posts()) :
 
 <?php if ('destinations' === $slug) :
     $image_map = ['mountains-and-wild-places' => 'story-mountains.png', 'cities-and-culture' => 'story-city.png', 'coasts-and-islands' => 'story-coast.png'];
+    $description_map = [
+        'mountains-and-wild-places' => __('High trails, open skies and landscapes that put everyday life back into perspective.', 'travel-riddle'),
+        'cities-and-culture' => __('Street-level stories, local traditions and the character revealed beyond the landmarks.', 'travel-riddle'),
+        'coasts-and-islands' => __('Salt-air escapes, quiet coves and places shaped by the rhythm of the water.', 'travel-riddle'),
+    ];
     $terms = get_terms(['taxonomy' => 'destination', 'hide_empty' => false]);
+    $terms = is_wp_error($terms) ? [] : $terms;
+    $published_stories = array_sum(array_map(static fn($term): int => (int) $term->count, $terms));
 ?>
 <main class="inner-page destinations-page">
-  <section class="section inner-intro"><div class="wrap inner-intro__grid"><p class="eyebrow"><?php esc_html_e('Where will curiosity lead?', 'travel-riddle'); ?></p><div><?php the_content(); ?></div></div></section>
-  <section class="section destination-directory"><div class="wrap"><div class="section-head"><div><p class="eyebrow"><?php esc_html_e('Browse by landscape', 'travel-riddle'); ?></p><h2><?php esc_html_e('Find your next story', 'travel-riddle'); ?></h2></div><p><?php esc_html_e('Every collection grows as new field notes, guides and first-hand perspectives are published.', 'travel-riddle'); ?></p></div>
-    <div class="destination-grid destination-grid--directory">
-      <?php if (!is_wp_error($terms) && $terms) : foreach ($terms as $term) : $image = $image_map[$term->slug] ?? 'intro-journey.png'; ?>
-        <a class="destination-card" href="<?php echo esc_url(get_term_link($term)); ?>"><img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/' . $image); ?>" alt=""><div><span><?php echo esc_html(sprintf(_n('%d published story', '%d published stories', $term->count, 'travel-riddle'), $term->count)); ?></span><h3><?php echo esc_html($term->name); ?></h3><b aria-hidden="true">&#8599;</b></div></a>
-      <?php endforeach; endif; ?>
+  <section class="section destinations-intro"><div class="wrap destinations-intro__grid">
+    <div class="destinations-intro__copy"><p class="eyebrow"><?php esc_html_e('Where will curiosity lead?', 'travel-riddle'); ?></p><div><?php the_content(); ?></div></div>
+    <aside class="destination-atlas" aria-label="<?php esc_attr_e('Travel Riddle destination overview', 'travel-riddle'); ?>">
+      <p class="destination-atlas__label"><?php esc_html_e('The Travel Riddle atlas', 'travel-riddle'); ?></p>
+      <dl><div><dt><?php echo esc_html(count($terms)); ?></dt><dd><?php esc_html_e('Landscapes to explore', 'travel-riddle'); ?></dd></div><div><dt><?php echo esc_html($published_stories); ?></dt><dd><?php echo esc_html(_n('Published story', 'Published stories', $published_stories, 'travel-riddle')); ?></dd></div></dl>
+      <p><?php esc_html_e('Made for travellers who want to understand a place—not simply pass through it.', 'travel-riddle'); ?></p>
+    </aside>
+  </div></section>
+  <section class="section destination-directory"><div class="wrap">
+    <div class="destination-directory__head"><div><p class="eyebrow"><?php esc_html_e('Browse by landscape', 'travel-riddle'); ?></p><h2><?php esc_html_e('Find your next story', 'travel-riddle'); ?></h2></div><p><?php esc_html_e('Choose the kind of place calling to you. Every collection grows as new field notes and first-hand perspectives are published.', 'travel-riddle'); ?></p></div>
+    <div class="destination-collections">
+      <?php foreach ($terms as $index => $term) :
+          $image = $image_map[$term->slug] ?? 'intro-journey.png';
+          $description = trim(wp_strip_all_tags(term_description($term)));
+          $description = $description ?: ($description_map[$term->slug] ?? __('Travel inspiration, useful perspectives and memorable stories from the road.', 'travel-riddle'));
+      ?>
+        <a class="destination-collection" href="<?php echo esc_url(get_term_link($term)); ?>">
+          <figure><img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/' . $image); ?>" alt="<?php echo esc_attr(sprintf(__('Explore %s', 'travel-riddle'), $term->name)); ?>"></figure>
+          <div class="destination-collection__body"><div class="destination-collection__meta"><span><?php echo esc_html(sprintf('%02d', $index + 1)); ?></span><span><?php echo esc_html(sprintf(_n('%d story', '%d stories', $term->count, 'travel-riddle'), $term->count)); ?></span></div><h3><?php echo esc_html($term->name); ?></h3><p><?php echo esc_html(wp_trim_words($description, 22, '…')); ?></p><span class="destination-collection__link"><?php esc_html_e('Explore collection', 'travel-riddle'); ?> <b aria-hidden="true">&#8594;</b></span></div>
+        </a>
+      <?php endforeach; ?>
     </div>
   </div></section>
 </main>

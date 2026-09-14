@@ -3,7 +3,7 @@ Theme Name: Travel Riddle
 Theme URI: https://travelriddle.com/
 Author: Travel Riddle
 Description: A cinematic, editorial WordPress theme for meaningful travel stories.
-Version: 1.5.6
+Version: 1.6.0
 Requires at least: 6.5
 Requires PHP: 8.1
 Text Domain: travel-riddle
@@ -310,8 +310,43 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
 .inner-intro__grid { display: grid; grid-template-columns: .6fr 1.4fr; gap: 70px; align-items: start; }
 .inner-intro__grid p { max-width: 760px; margin-top: 0; color: var(--ink-soft); }
 .inner-intro__grid .intro-lead { color: var(--ink); font: 1.45rem/1.55 var(--display); }
-.destination-directory { padding-top: 30px; color: white; background: var(--forest); }
-.destination-grid--directory .destination-card { min-height: 540px; }
+
+/* Destination atlas */
+.destinations-intro { position: relative; overflow: hidden; padding-block: clamp(72px,8vw,108px); background: #faf8f3; }
+.destinations-intro::after { position: absolute; top: 12%; right: -90px; width: 540px; height: 360px; content: ''; opacity: .065; background: url('assets/images/travel-route-pattern.svg') center/contain no-repeat; pointer-events: none; }
+.destinations-intro__grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,1.25fr) minmax(300px,.75fr); gap: clamp(54px,8vw,110px); align-items: center; }
+.destinations-intro__copy { max-width: 710px; }
+.destinations-intro__copy > div { color: var(--ink-soft); font-size: 1.02rem; }
+.destinations-intro__copy .intro-lead,.destinations-intro__copy > div > p:first-child { margin: 0 0 22px; color: var(--ink); font: 400 clamp(1.55rem,2.4vw,2.25rem)/1.35 var(--display); }
+.destinations-intro__copy p:last-child { margin-bottom: 0; }
+.destination-atlas { position: relative; padding: 34px 36px 32px; background: #123b31; color: white; box-shadow: 18px 18px 0 #e9dfcf; }
+.destination-atlas::before { position: absolute; top: 20px; right: 22px; width: 54px; height: 54px; content: '✦'; display: grid; place-content: center; color: #e7bc80; border: 1px solid rgba(231,188,128,.45); border-radius: 50%; font-size: 1.15rem; }
+.destination-atlas__label { margin: 0 0 28px; color: #e7bc80; font-size: .67rem; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
+.destination-atlas dl { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 0; }
+.destination-atlas dl div { padding-top: 18px; border-top: 1px solid rgba(255,255,255,.18); }
+.destination-atlas dt { font: 400 clamp(2.5rem,4vw,3.8rem)/1 var(--display); }
+.destination-atlas dd { margin: 8px 0 0; color: rgba(255,255,255,.64); font-size: .68rem; font-weight: 750; letter-spacing: .1em; line-height: 1.45; text-transform: uppercase; }
+.destination-atlas > p:last-child { margin: 30px 0 0; padding-top: 22px; color: rgba(255,255,255,.67); border-top: 1px solid rgba(255,255,255,.18); font: italic 1rem/1.55 var(--display); }
+.destination-directory { position: relative; overflow: hidden; padding-block: clamp(74px,8vw,110px); color: var(--ink); background: #efe8dc; }
+.destination-directory::before { position: absolute; inset: 0; content: ''; opacity: .055; background: url('assets/images/story-route-pattern.svg') 50% 10%/100% auto no-repeat; pointer-events: none; }
+.destination-directory .wrap { position: relative; z-index: 1; }
+.destination-directory__head { display: grid; grid-template-columns: 1fr minmax(300px,470px); gap: 50px; align-items: end; margin-bottom: 46px; }
+.destination-directory__head h2 { font-size: clamp(2.15rem,3.5vw,3.45rem); }
+.destination-directory__head > p { margin: 0; color: var(--ink-soft); }
+.destination-collections { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.destination-collection { position: relative; display: flex; min-width: 0; overflow: hidden; flex-direction: column; color: var(--ink); background: white; border: 1px solid rgba(23,33,29,.1); box-shadow: 0 18px 50px rgba(16,38,30,.08); text-decoration: none; transition: transform .3s ease,box-shadow .3s ease; }
+.destination-collection:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(16,38,30,.14); }
+.destination-collection figure { position: relative; margin: 0; overflow: hidden; }
+.destination-collection figure::after { position: absolute; right: 18px; bottom: 18px; width: 34px; height: 34px; content: '✦'; display: grid; place-content: center; color: #173b32; background: #efc58c; border-radius: 50%; }
+.destination-collection img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform .6s ease; }
+.destination-collection:hover img { transform: scale(1.04); }
+.destination-collection__body { display: flex; padding: 26px 27px 29px; flex: 1; flex-direction: column; }
+.destination-collection__meta { display: flex; justify-content: space-between; gap: 16px; color: #9c713c; font-size: .62rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.destination-collection h3 { margin-top: 14px; font-size: clamp(1.55rem,2.15vw,2.15rem); }
+.destination-collection__body > p { margin: 15px 0 22px; color: var(--ink-soft); font-size: .9rem; line-height: 1.65; }
+.destination-collection__link { display: inline-flex; margin-top: auto; align-items: center; gap: 10px; font-size: .68rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.destination-collection__link b { color: var(--gold); font-size: 1.05rem; transition: transform .25s ease; }
+.destination-collection:hover .destination-collection__link b { transform: translateX(5px); }
 .about-story { background: white; }
 .about-story__grid { display: grid; grid-template-columns: minmax(280px,.75fr) 1.25fr; gap: clamp(55px,8vw,120px); align-items: start; }
 .about-story__aside { position: sticky; top: 30px; margin: 0; }
@@ -537,6 +572,11 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
   .site-header .main-nav { position: fixed; left: 0; transform: none; }
   .site-header .header-actions { position: static; margin-left: auto; }
   .brand img { width: clamp(235px,32vw,270px); max-height: none; }
+  .destinations-intro__grid { grid-template-columns: 1fr; }
+  .destination-atlas { width: min(100%,560px); }
+  .destination-directory__head { grid-template-columns: 1fr; gap: 18px; }
+  .destination-collections { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .destination-collection:last-child { grid-column: 1/-1; width: calc(50% - 12px); justify-self: center; }
   .about-story__grid { grid-template-columns: 1fr; gap: 42px; }
   .about-story__aside--founder { width: 100%; max-width: 340px; }
   .hero--editorial { height: 560px; }
@@ -573,6 +613,20 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
 @media (max-width:620px) {
   .site-header__inner { min-height: 100px; }
   .brand img { width: min(240px,66vw); max-height: none; }
+  .destinations-intro { padding-block: 58px 68px; }
+  .destinations-intro__grid { gap: 40px; }
+  .destination-atlas { padding: 28px 25px; box-shadow: 10px 10px 0 #e9dfcf; }
+  .destination-directory { padding-block: 60px; }
+  .destination-directory__head { margin-bottom: 32px; }
+  .destination-collections { grid-template-columns: 1fr; gap: 20px; }
+  .destination-collection:last-child { width: 100%; grid-column: auto; }
+  .destination-collection { display: grid; grid-template-columns: 39% 1fr; }
+  .destination-collection figure,.destination-collection img { height: 100%; min-height: 220px; }
+  .destination-collection img { aspect-ratio: auto; }
+  .destination-collection figure::after { right: 10px; bottom: 10px; width: 29px; height: 29px; }
+  .destination-collection__body { padding: 21px 19px 22px; }
+  .destination-collection h3 { font-size: 1.45rem; }
+  .destination-collection__body > p { display: none; }
   .about-story { padding-block: 58px; }
   .about-story__aside--founder { max-width: 280px; margin-inline: auto; }
   .main-nav { padding: 104px 22px 76px; align-content: start; }
