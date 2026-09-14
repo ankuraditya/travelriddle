@@ -3,7 +3,7 @@ Theme Name: Travel Riddle
 Theme URI: https://travelriddle.com/
 Author: Travel Riddle
 Description: A cinematic, editorial WordPress theme for meaningful travel stories.
-Version: 1.5.5
+Version: 1.5.6
 Requires at least: 6.5
 Requires PHP: 8.1
 Text Domain: travel-riddle
@@ -158,19 +158,22 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
 .footer-bottom nav { display: flex; gap: 24px; }
 .footer-bottom a { text-decoration: none; }
 
-.page-hero { position: relative; overflow: hidden; min-height: 470px; padding: 190px 0 80px; display: flex; align-items: end; color: white; background: linear-gradient(90deg,rgba(6,20,15,.82),rgba(6,20,15,.38)),url('assets/images/intro-journey.png') center 45%/cover; }
+.page-hero { position: relative; overflow: hidden; min-height: 470px; padding: 190px 0 80px; display: flex; align-items: end; color: white; background: url('assets/images/intro-journey.png') center 45%/cover no-repeat; }
 .page-hero::after { position: absolute; right: -100px; bottom: -230px; width: 520px; height: 520px; content: ''; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; }
 .page-hero .wrap { position: relative; z-index: 1; }
 .page-hero h1 { font-size: clamp(2.8rem,5vw,5rem); }
-.page-hero__intro { max-width: 650px; margin: 24px 0 0; color: rgba(255,255,255,.78); font: 1.2rem/1.6 var(--display); }
-.page-hero--destinations { background-image: linear-gradient(90deg,rgba(6,20,15,.84),rgba(6,20,15,.35)),url('assets/images/story-coast.png'); }
+.page-hero__intro { max-width: 650px; margin: 24px 0 0; color: white; font: 1.2rem/1.6 var(--display); }
+.page-hero .eyebrow,
+.page-hero h1,
+.page-hero__intro { text-shadow: 0 2px 18px rgba(6,20,15,.68),0 1px 3px rgba(6,20,15,.75); }
+.page-hero--destinations { background-image: url('assets/images/story-coast.png'); }
 .page-hero--stories { background-image: url('assets/images/intro-journey.png'); background-position: center 45%; background-size: cover; background-repeat: no-repeat; }
 .page-hero--stories .eyebrow,
 .page-hero--stories h1 { text-shadow: 0 2px 18px rgba(6,20,15,.65); }
 .page-hero--about { background-color: #bdd9eb; background-image: url('assets/images/about-cappadocia-banner.webp'); background-position: center; background-size: cover; background-repeat: no-repeat; }
 .page-hero--about .eyebrow,
 .page-hero--about h1 { text-shadow: 0 2px 18px rgba(6,20,15,.55); }
-.page-hero--contact { background-image: linear-gradient(90deg,rgba(6,20,15,.88),rgba(6,20,15,.4)),url('assets/images/story-city.png'); }
+.page-hero--contact { background-image: url('assets/images/story-city.png'); }
 .content-area { width: var(--reading); padding: 80px 0 120px; margin-inline: auto; }
 .content-area > * { max-width: 100%; }
 .content-area p { margin: 0 0 1.5em; }
