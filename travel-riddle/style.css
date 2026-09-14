@@ -3,7 +3,7 @@ Theme Name: Travel Riddle
 Theme URI: https://travelriddle.com/
 Author: Travel Riddle
 Description: A cinematic, editorial WordPress theme for meaningful travel stories.
-Version: 1.5.1
+Version: 1.5.2
 Requires at least: 6.5
 Requires PHP: 8.1
 Text Domain: travel-riddle
@@ -413,12 +413,21 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
 }
 
 /* Editorial redesign 1.2 */
-.site-header { position: relative; color: white; background-color: #102a23 !important; border-bottom: 1px solid rgba(255,255,255,.12); }
-.site-header__inner { position: relative; display: flex; width: calc(100% - 80px); min-height: 128px; max-width: none; align-items: center; justify-content: space-between; }
-.brand { display: inline-flex; width: max-content; flex: 0 0 auto; align-items: center; }
-.brand img { width: clamp(330px,26vw,360px); height: auto; max-height: none; object-fit: contain; }
-.site-header .main-nav { position: absolute; left: 50%; transform: translateX(-50%); }
-.site-header .header-actions { position: absolute; right: clamp(100px,12vw,220px); margin: 0; }
+.site-header { position: relative; color: white; background: linear-gradient(90deg,#0d2821 0%,#102f27 52%,#0d2821 100%) !important; border-bottom: 1px solid rgba(255,255,255,.12); box-shadow: 0 8px 24px rgba(4,18,14,.08); }
+.site-header__inner { position: relative; display: grid; width: min(1500px,calc(100% - 64px)); min-height: 124px; max-width: none; grid-template-columns: minmax(300px,1fr) auto minmax(180px,1fr); column-gap: 34px; align-items: center; }
+.brand { display: inline-flex; width: max-content; align-items: center; justify-self: start; }
+.brand img { width: clamp(285px,23vw,310px); height: auto; max-height: none; object-fit: contain; }
+.site-header .main-nav { position: static; transform: none; justify-self: center; }
+.site-header .header-actions { position: static; margin: 0; justify-self: end; }
+@media (min-width:901px) {
+  .site-header .nav-list { gap: clamp(22px,2.2vw,36px); }
+  .site-header .nav-list a { position: relative; padding: 15px 0; transition: color .22s ease; }
+  .site-header .nav-list a::after { position: absolute; right: 0; bottom: 7px; left: 0; height: 1px; content: ''; background: #e7bc80; transform: scaleX(0); transform-origin: center; transition: transform .22s ease; }
+  .site-header .nav-list a:hover,.site-header .nav-list .current-menu-item > a { color: #f0c991; }
+  .site-header .nav-list a:hover::after,.site-header .nav-list .current-menu-item > a::after { transform: scaleX(1); }
+  .site-header .header-actions .text-link { padding: 9px 13px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; transition: color .22s ease,border-color .22s ease,background .22s ease; }
+  .site-header .header-actions .text-link:hover { color: #f0c991; background: rgba(255,255,255,.05); border-color: rgba(240,201,145,.55); }
+}
 .hero--editorial { height: clamp(500px,68svh,650px); align-items: end; color: white; background: #20352e; }
 .hero--editorial::after { display: none; }
 .hero--editorial .hero__video { filter: none; }
@@ -518,10 +527,10 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
 .about-story__content blockquote { max-width: 680px; margin: 24px 0 28px; padding: 12px 0 12px 20px; font-size: clamp(1.2rem,1.7vw,1.65rem); line-height: 1.4; }
 
 @media (max-width:900px) {
-  .site-header__inner { display: grid; width: var(--wrap); min-height: 100px; grid-template-columns: auto 1fr auto; }
+  .site-header__inner { display: grid; width: var(--wrap); min-height: 108px; grid-template-columns: auto 1fr auto; column-gap: 16px; }
   .site-header .main-nav { position: fixed; left: 0; transform: none; }
   .site-header .header-actions { position: static; margin-left: auto; }
-  .brand img { width: clamp(250px,38vw,275px); max-height: none; }
+  .brand img { width: clamp(235px,32vw,270px); max-height: none; }
   .hero--editorial { height: 560px; }
   .home-intro__grid,.story-grid--editorial,.home-promise__inner { grid-template-columns: 1fr; }
   .home-intro__image { max-width: 650px; }
@@ -548,13 +557,14 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
   .hero-quote__nav { display: none; }
 }
 @media (min-width:901px) and (max-width:1180px) {
-  .site-header__inner { width: calc(100% - 48px); }
-  .brand img { width: 310px; }
-  .nav-list { gap: 20px; }
+  .site-header__inner { width: calc(100% - 40px); grid-template-columns: minmax(260px,1fr) auto minmax(120px,1fr); column-gap: 18px; }
+  .brand img { width: 265px; }
+  .site-header .nav-list { gap: 18px; }
+  .site-header .nav-list a { font-size: .69rem; }
 }
 @media (max-width:620px) {
-  .site-header__inner { min-height: 92px; }
-  .brand img { width: min(250px,68vw); max-height: none; }
+  .site-header__inner { min-height: 100px; }
+  .brand img { width: min(240px,66vw); max-height: none; }
   .main-nav { padding: 104px 22px 76px; align-content: start; }
   .main-nav::before { top: 31px; left: 22px; }
   .main-nav::after { right: 22px; bottom: 22px; left: 22px; }
