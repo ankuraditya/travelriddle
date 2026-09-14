@@ -416,7 +416,7 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
 .site-header { position: relative; color: white; background-color: #102a23 !important; border-bottom: 1px solid rgba(255,255,255,.12); }
 .site-header__inner { position: relative; display: flex; width: calc(100% - 80px); min-height: 128px; max-width: none; align-items: center; justify-content: space-between; }
 .brand { display: inline-flex; width: max-content; flex: 0 0 auto; align-items: center; }
-.brand img { width: clamp(330px,26vw,410px); height: auto; max-height: 112px; object-fit: contain; }
+.brand img { width: clamp(330px,26vw,360px); height: auto; max-height: none; object-fit: contain; }
 .site-header .main-nav { position: absolute; left: 50%; transform: translateX(-50%); }
 .site-header .header-actions { position: absolute; right: clamp(100px,12vw,220px); margin: 0; }
 .hero--editorial { height: clamp(500px,68svh,650px); align-items: end; color: white; background: #20352e; }
@@ -521,7 +521,7 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
   .site-header__inner { display: grid; width: var(--wrap); min-height: 100px; grid-template-columns: auto 1fr auto; }
   .site-header .main-nav { position: fixed; left: 0; transform: none; }
   .site-header .header-actions { position: static; margin-left: auto; }
-  .brand img { width: clamp(260px,42vw,320px); max-height: 92px; }
+  .brand img { width: clamp(250px,38vw,275px); max-height: none; }
   .hero--editorial { height: 560px; }
   .home-intro__grid,.story-grid--editorial,.home-promise__inner { grid-template-columns: 1fr; }
   .home-intro__image { max-width: 650px; }
@@ -554,7 +554,7 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
 }
 @media (max-width:620px) {
   .site-header__inner { min-height: 92px; }
-  .brand img { width: min(250px,68vw); max-height: 82px; }
+  .brand img { width: min(250px,68vw); max-height: none; }
   .main-nav { padding: 104px 22px 76px; align-content: start; }
   .main-nav::before { top: 31px; left: 22px; }
   .main-nav::after { right: 22px; bottom: 22px; left: 22px; }
