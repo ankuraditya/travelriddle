@@ -22,7 +22,12 @@
     videos.forEach((video, i) => {
       const active = i === videoIndex;
       video.classList.toggle('is-active', active);
-      if (active) video.play().catch(() => {}); else video.pause();
+      if (active) {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
     });
   };
   if (videos.length) {
