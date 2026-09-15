@@ -17,30 +17,58 @@
   const videos = [...document.querySelectorAll('.hero__video')];
   let videoIndex = 0;
   let videoTimer;
+  let videoPaused = reducedMotion;
+  let soundEnabled = false;
+  const pauseButton = document.querySelector('[data-video-pause]');
+  const soundButton = document.querySelector('[data-video-sound]');
+  const setHeroRatio = video => {
+    if (video.videoWidth && video.videoHeight) document.querySelector('.hero--editorial')?.style.setProperty('--travel-video-ratio', `${video.videoWidth} / ${video.videoHeight}`);
+  };
   const showVideo = index => {
+    clearTimeout(videoTimer);
     videoIndex = (index + videos.length) % videos.length;
     videos.forEach((video, i) => {
       const active = i === videoIndex;
       video.classList.toggle('is-active', active);
       if (active) {
         video.currentTime = 0;
-        video.play().catch(() => {});
+        video.muted = !soundEnabled || video.dataset.hasAudio !== 'true';
+        setHeroRatio(video);
+        if (!videoPaused) video.play().catch(() => { if (!video.muted) { soundEnabled = false; video.muted = true; video.play().catch(() => {}); } });
       } else {
         video.pause();
       }
     });
+    if (soundButton) {
+      soundButton.hidden = videos[videoIndex].dataset.hasAudio !== 'true';
+      soundButton.textContent = soundEnabled ? 'Sound off' : 'Sound on';
+      soundButton.setAttribute('aria-pressed', String(soundEnabled));
+    }
+    if (!videoPaused) videoTimer = setTimeout(() => showVideo(videoIndex + 1), 20000);
   };
   if (videos.length) {
-    const setHeroRatio = video => {
-      if (video.videoWidth && video.videoHeight) {
-        document.querySelector('.hero--editorial')?.style.setProperty('--travel-video-ratio', `${video.videoWidth} / ${video.videoHeight}`);
-      }
-    };
-    videos.forEach(video => video.addEventListener('loadedmetadata', () => setHeroRatio(video), { once: true }));
-    if (videos[0].readyState >= 1) setHeroRatio(videos[0]);
-    const restartVideos = () => { clearInterval(videoTimer); if (!reducedMotion) videoTimer = setInterval(() => showVideo(videoIndex + 1), 8000); };
+    videos.forEach((video, index) => {
+      video.addEventListener('loadedmetadata', () => { if (index === videoIndex) setHeroRatio(video); });
+      video.addEventListener('ended', () => { if (index === videoIndex && !videoPaused) showVideo(videoIndex + 1); });
+      video.addEventListener('error', () => { if (index === videoIndex && !videoPaused) showVideo(videoIndex + 1); });
+    });
+    pauseButton?.addEventListener('click', () => {
+      videoPaused = !videoPaused;
+      clearTimeout(videoTimer);
+      pauseButton.textContent = videoPaused ? 'Play' : 'Pause';
+      pauseButton.setAttribute('aria-label', videoPaused ? 'Play banner videos' : 'Pause banner videos');
+      if (videoPaused) videos[videoIndex].pause();
+      else { videos[videoIndex].play().catch(() => {}); videoTimer = setTimeout(() => showVideo(videoIndex + 1), 20000); }
+    });
+    document.querySelector('[data-video-next]')?.addEventListener('click', () => showVideo(videoIndex + 1));
+    soundButton?.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      videos[videoIndex].muted = !soundEnabled;
+      soundButton.textContent = soundEnabled ? 'Sound off' : 'Sound on';
+      soundButton.setAttribute('aria-pressed', String(soundEnabled));
+    });
+    if (reducedMotion && pauseButton) { pauseButton.textContent = 'Play'; pauseButton.setAttribute('aria-label', 'Play banner videos'); }
     showVideo(0);
-    restartVideos();
   }
 
   const quotes = [...document.querySelectorAll('.quote-slide')];
