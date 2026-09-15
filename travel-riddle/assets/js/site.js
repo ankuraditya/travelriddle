@@ -34,7 +34,8 @@
         video.currentTime = 0;
         video.muted = !soundEnabled || video.dataset.hasAudio !== 'true';
         setHeroRatio(video);
-        if (!videoPaused) video.play().catch(() => { if (!video.muted) { soundEnabled = false; video.muted = true; video.play().catch(() => {}); } });
+        if (videoPaused) video.pause();
+        else video.play().catch(() => { if (!video.muted) { soundEnabled = false; video.muted = true; if (soundButton) { soundButton.textContent = 'Sound on'; soundButton.setAttribute('aria-pressed', 'false'); } video.play().catch(() => {}); } });
       } else {
         video.pause();
       }
