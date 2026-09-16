@@ -3,7 +3,7 @@ Theme Name: Travel Riddle
 Theme URI: https://travelriddle.com/
 Author: Travel Riddle
 Description: A cinematic, editorial WordPress theme for meaningful travel stories.
-Version: 1.8.0
+Version: 1.8.1
 Requires at least: 6.5
 Requires PHP: 8.1
 Text Domain: travel-riddle
@@ -611,12 +611,11 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
   .site-header .brand { position: absolute; z-index: 2; top: 14px; left: 50%; transform: translateX(-50%); }
   .site-header .brand img { width: clamp(285px,23vw,310px); }
   .site-header .main-nav { width: 100%; min-height: 124px; }
-  .site-header .nav-list { display: grid; min-height: 124px; grid-template-columns: 1fr auto auto minmax(330px,1fr) auto auto auto 1fr; gap: clamp(18px,1.8vw,30px); align-items: center; }
+  .site-header .nav-list { display: grid; min-height: 124px; grid-template-columns: 1fr auto auto minmax(330px,1fr) auto auto 1fr; gap: clamp(18px,1.8vw,30px); align-items: center; }
   .site-header .nav-list li:nth-child(1) { grid-column: 2; }
   .site-header .nav-list li:nth-child(2) { grid-column: 3; }
   .site-header .nav-list li:nth-child(3) { grid-column: 5; }
   .site-header .nav-list li:nth-child(4) { grid-column: 6; }
-  .site-header .nav-list li:nth-child(5) { grid-column: 7; }
   .site-header .header-actions { display: none; }
 }
 .home .hero-quote { position: absolute; top: 150px; right: max(28px,calc((100vw - 1500px)/2)); bottom: auto; left: auto; width: min(390px,calc(100% - 48px)); margin: 0; padding: 0; text-align: right; background: transparent; box-shadow: none; backdrop-filter: none; text-shadow: 0 2px 8px rgba(0,0,0,.9),0 1px 18px rgba(0,0,0,.6); }
