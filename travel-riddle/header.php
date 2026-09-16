@@ -17,7 +17,6 @@
       <?php wp_nav_menu(['theme_location' => 'primary', 'container' => false, 'menu_class' => 'nav-list', 'fallback_cb' => 'travel_riddle_fallback_menu']); ?>
     </nav>
     <div class="header-actions">
-      <a class="text-link" href="<?php echo esc_url(home_url('/?s=')); ?>"><?php esc_html_e('Search', 'travel-riddle'); ?></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="<?php esc_attr_e('Open menu', 'travel-riddle'); ?>"><span></span><span></span></button>
     </div>
   </div>

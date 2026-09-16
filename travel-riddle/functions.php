@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 
-define('TRAVEL_RIDDLE_VERSION', '1.7.0');
+define('TRAVEL_RIDDLE_VERSION', '1.8.0');
 
 function travel_riddle_setup(): void {
     load_theme_textdomain('travel-riddle', get_template_directory() . '/languages');
@@ -37,7 +37,7 @@ function travel_riddle_fallback_menu(): void {
     $items = [
         home_url('/') => __('Home', 'travel-riddle'),
         home_url('/destinations/') => __('Destinations', 'travel-riddle'),
-        home_url('/stories/') => __('Stories', 'travel-riddle'),
+        home_url('/stories/') => __('The Riddle', 'travel-riddle'),
         home_url('/about/') => __('About', 'travel-riddle'),
         home_url('/contact/') => __('Contact', 'travel-riddle'),
     ];
@@ -47,6 +47,17 @@ function travel_riddle_fallback_menu(): void {
     }
     echo '</ul>';
 }
+
+function travel_riddle_primary_menu_labels(array $items, object $args): array {
+    if (($args->theme_location ?? '') !== 'primary') { return $items; }
+    foreach ($items as $item) {
+        if (untrailingslashit((string) wp_parse_url($item->url, PHP_URL_PATH)) === '/stories') {
+            $item->title = __('The Riddle', 'travel-riddle');
+        }
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_objects', 'travel_riddle_primary_menu_labels', 10, 2);
 
 function travel_riddle_reading_time(int $post_id = 0): int {
     $content = get_post_field('post_content', $post_id ?: get_the_ID());

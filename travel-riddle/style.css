@@ -3,7 +3,7 @@ Theme Name: Travel Riddle
 Theme URI: https://travelriddle.com/
 Author: Travel Riddle
 Description: A cinematic, editorial WordPress theme for meaningful travel stories.
-Version: 1.7.0
+Version: 1.8.0
 Requires at least: 6.5
 Requires PHP: 8.1
 Text Domain: travel-riddle
@@ -604,6 +604,38 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
   .hero-quote figcaption { margin-top: 3px; font-size: .62rem; }
   .hero-quote__nav { display: none; }
 }
+
+/* Client refinements 1.8: centred identity, split navigation and clean quotes. */
+@media (min-width:901px) {
+  .site-header__inner { display: block; width: min(1500px,calc(100% - 64px)); min-height: 124px; }
+  .site-header .brand { position: absolute; z-index: 2; top: 14px; left: 50%; transform: translateX(-50%); }
+  .site-header .brand img { width: clamp(285px,23vw,310px); }
+  .site-header .main-nav { width: 100%; min-height: 124px; }
+  .site-header .nav-list { display: grid; min-height: 124px; grid-template-columns: 1fr auto auto minmax(330px,1fr) auto auto auto 1fr; gap: clamp(18px,1.8vw,30px); align-items: center; }
+  .site-header .nav-list li:nth-child(1) { grid-column: 2; }
+  .site-header .nav-list li:nth-child(2) { grid-column: 3; }
+  .site-header .nav-list li:nth-child(3) { grid-column: 5; }
+  .site-header .nav-list li:nth-child(4) { grid-column: 6; }
+  .site-header .nav-list li:nth-child(5) { grid-column: 7; }
+  .site-header .header-actions { display: none; }
+}
+.home .hero-quote { position: absolute; top: 150px; right: max(28px,calc((100vw - 1500px)/2)); bottom: auto; left: auto; width: min(390px,calc(100% - 48px)); margin: 0; padding: 0; text-align: right; background: transparent; box-shadow: none; backdrop-filter: none; text-shadow: 0 2px 8px rgba(0,0,0,.9),0 1px 18px rgba(0,0,0,.6); }
+.home .hero-quote__label { display: none; }
+.home .hero-quote__stage { min-height: 92px; }
+.home .hero-quote .quote-slide { align-items: flex-end; justify-content: flex-start; }
+.home .hero-quote blockquote { max-width: 390px; font-size: clamp(1rem,1.35vw,1.25rem); }
+.home .hero-quote figcaption { color: rgba(255,255,255,.92); }
+.home .hero-quote__nav { justify-content: flex-end; padding-top: 7px; border: 0; color: rgba(255,255,255,.85); }
+@media (max-width:900px) {
+  .site-header .brand { position: absolute; z-index: 21; top: 8px; left: 50%; transform: translateX(-50%); }
+  .site-header__inner { min-height: 88px; }
+  .site-header .header-actions { margin-left: auto; }
+  .home .hero-quote { top: 94px; right: 10px; bottom: auto; left: auto; width: min(270px,calc(100% - 20px)); padding: 0; background: transparent; }
+  .home .hero-quote__stage { min-height: 54px; }
+  .home .hero-quote blockquote { font-size: .82rem; line-height: 1.22; }
+  .home .hero-quote figcaption { font-size: .6rem; }
+  .home .hero-quote__nav { display: none; }
+}
 @media (min-width:901px) and (max-width:1180px) {
   .site-header__inner { width: calc(100% - 40px); grid-template-columns: minmax(260px,1fr) auto minmax(120px,1fr); column-gap: 18px; }
   .brand img { width: 265px; }
@@ -700,4 +732,19 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
   .home .hero-quote { bottom: 43px; padding: 7px 10px; }
   .home .hero-quote__label { display: none; }
   .home .hero-quote__stage { min-height: 42px; }
+}
+
+/* Keep the clean quote placement last so it wins at every breakpoint. */
+.home .hero-quote { position: absolute; top: 150px; right: max(28px,calc((100vw - 1500px)/2)); bottom: auto; left: auto; width: min(390px,calc(100% - 48px)); margin: 0; padding: 0; text-align: right; background: transparent; box-shadow: none; backdrop-filter: none; text-shadow: 0 2px 8px rgba(0,0,0,.9),0 1px 18px rgba(0,0,0,.6); }
+.home .hero-quote__label { display: none; }
+.home .hero-quote__stage { min-height: 92px; }
+.home .hero-quote .quote-slide { align-items: flex-end; justify-content: flex-start; }
+.home .hero-quote__nav { justify-content: flex-end; padding-top: 7px; border: 0; color: rgba(255,255,255,.85); }
+@media (max-width:900px) {
+  .site-header .brand { position: absolute; z-index: 21; top: 8px; left: 50%; transform: translateX(-50%); }
+  .site-header .header-actions { position: absolute; z-index: 31; top: 20px; right: 0; margin: 0; }
+  .home .hero-quote { top: 100px; right: 10px; bottom: auto; left: auto; width: min(270px,calc(100% - 20px)); padding: 0; background: transparent; }
+  .home .hero-quote__stage { min-height: 54px; }
+  .home .hero-quote blockquote { font-size: .82rem; line-height: 1.22; }
+  .home .hero-quote__nav { display: none; }
 }
