@@ -3,7 +3,7 @@ Theme Name: Travel Riddle
 Theme URI: https://travelriddle.com/
 Author: Travel Riddle
 Description: A cinematic, editorial WordPress theme for meaningful travel stories.
-Version: 1.8.1
+Version: 1.8.2
 Requires at least: 6.5
 Requires PHP: 8.1
 Text Domain: travel-riddle
@@ -635,6 +635,7 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
   .home .hero-quote figcaption { font-size: .6rem; }
   .home .hero-quote__nav { display: none; }
 }
+
 @media (min-width:901px) and (max-width:1180px) {
   .site-header__inner { width: calc(100% - 40px); grid-template-columns: minmax(260px,1fr) auto minmax(120px,1fr); column-gap: 18px; }
   .brand img { width: 265px; }
@@ -746,4 +747,11 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
   .home .hero-quote__stage { min-height: 54px; }
   .home .hero-quote blockquote { font-size: .82rem; line-height: 1.22; }
   .home .hero-quote__nav { display: none; }
+}
+
+/* Readable on every film: a compact, translucent brand-colour glass panel. */
+.home .hero-quote { padding: 18px 20px 14px; border: 1px solid rgba(255,255,255,.2); border-radius: 14px; background: linear-gradient(135deg,rgba(8,38,28,.84),rgba(8,38,28,.68)); box-shadow: 0 12px 34px rgba(0,0,0,.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.home .hero-quote blockquote,.home .hero-quote figcaption,.home .hero-quote__nav { text-shadow: 0 1px 5px rgba(0,0,0,.55); }
+@media (max-width:900px) {
+  .home .hero-quote { width: min(280px,calc(100% - 20px)); padding: 10px 12px 9px; border-radius: 10px; background: linear-gradient(135deg,rgba(8,38,28,.84),rgba(8,38,28,.68)); }
 }
