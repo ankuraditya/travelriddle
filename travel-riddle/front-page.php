@@ -4,7 +4,8 @@ $travel_quotes = [
 <section class="hero hero--editorial">
   <div class="hero__videos" aria-hidden="true">
     <?php foreach (array_merge(range(1, 14), [16, 17]) as $index => $number) : ?>
-      <video class="hero__video<?php echo 0 === $index ? ' is-active' : ''; ?>" <?php echo 0 === $index ? 'autoplay' : ''; ?> muted playsinline webkit-playsinline preload="<?php echo 0 === $index ? 'auto' : 'none'; ?>" poster="<?php echo esc_url(get_template_directory_uri() . '/assets/images/hero-poster-' . $number . '.webp'); ?>"><source src="<?php echo esc_url(get_template_directory_uri() . '/assets/video/hero-' . $number . '-web.mp4'); ?>" type="video/mp4"></video>
+      <?php $video_file = 9 === $number ? 'hero-9-web-v2.mp4' : 'hero-' . $number . '-web.mp4'; ?>
+      <video class="hero__video<?php echo 0 === $index ? ' is-active' : ''; ?>" <?php echo 0 === $index ? 'autoplay' : ''; ?> muted playsinline webkit-playsinline preload="<?php echo 0 === $index ? 'auto' : 'none'; ?>" poster="<?php echo esc_url(get_template_directory_uri() . '/assets/images/hero-poster-' . $number . '.webp'); ?>"><source src="<?php echo esc_url(get_template_directory_uri() . '/assets/video/' . $video_file); ?>" type="video/mp4"></video>
     <?php endforeach; ?>
   </div>
   <div class="hero-bottom-bar">
