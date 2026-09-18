@@ -3,7 +3,7 @@ Theme Name: Travel Riddle
 Theme URI: https://travelriddle.com/
 Author: Travel Riddle
 Description: A cinematic, editorial WordPress theme for meaningful travel stories.
-Version: 1.8.2
+Version: 1.8.3
 Requires at least: 6.5
 Requires PHP: 8.1
 Text Domain: travel-riddle
@@ -754,4 +754,28 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
 .home .hero-quote blockquote,.home .hero-quote figcaption,.home .hero-quote__nav { text-shadow: 0 1px 5px rgba(0,0,0,.55); }
 @media (max-width:900px) {
   .home .hero-quote { width: min(280px,calc(100% - 20px)); padding: 10px 12px 9px; border-radius: 10px; background: linear-gradient(135deg,rgba(8,38,28,.84),rgba(8,38,28,.68)); }
+}
+
+/* Client refinements 1.8.3: restore The Riddle and balance the hero footer. */
+@media (min-width:901px) {
+  .site-header .nav-list { grid-template-columns: 1fr auto auto minmax(330px,1fr) auto auto auto 1fr; }
+  .site-header .nav-list li:nth-child(3) { grid-column: 5; }
+  .site-header .nav-list li:nth-child(4) { grid-column: 6; }
+  .site-header .nav-list li:nth-child(5) { grid-column: 7; }
+}
+.hero-bottom-bar { position: absolute; z-index: 6; right: max(24px,calc((100vw - 1500px)/2)); bottom: 24px; left: max(24px,calc((100vw - 1500px)/2)); display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; pointer-events: none; }
+.hero-bottom-bar .hero-quote { position: relative; inset: auto; width: min(360px,calc(100% - 190px)); margin: 0; padding: 11px 14px 10px; text-align: left; border-radius: 11px; pointer-events: auto; }
+.hero-bottom-bar .hero-quote__stage { min-height: 48px; }
+.hero-bottom-bar .hero-quote .quote-slide { align-items: flex-start; justify-content: center; }
+.hero-bottom-bar .hero-quote blockquote { max-width: 100%; font-size: clamp(.78rem,1vw,.9rem); line-height: 1.23; }
+.hero-bottom-bar .hero-quote figcaption { margin-top: 3px; font-size: .58rem; }
+.hero-bottom-bar .hero-quote__nav { justify-content: flex-start; gap: 9px; padding-top: 4px; font-size: .52rem; }
+.hero-bottom-bar .hero-controls { position: static; flex: 0 0 auto; pointer-events: auto; }
+@media (max-width:900px) {
+  .hero-bottom-bar { right: 10px; bottom: 8px; left: 10px; gap: 8px; }
+  .hero-bottom-bar .hero-quote { position: relative; inset: auto; width: min(250px,calc(100% - 124px)); padding: 7px 9px 6px; text-align: left; border-radius: 8px; }
+  .hero-bottom-bar .hero-quote__stage { min-height: 48px; }
+  .hero-bottom-bar .hero-quote blockquote { font-size: .65rem; line-height: 1.15; }
+  .hero-bottom-bar .hero-quote figcaption { margin-top: 2px; font-size: .5rem; }
+  .hero-bottom-bar .hero-quote__nav { display: none; }
 }
