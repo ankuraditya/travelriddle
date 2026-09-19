@@ -784,3 +784,41 @@ h3 { font-size: clamp(1.45rem, 2.2vw, 2.2rem); }
   .hero-bottom-bar .hero-quote figcaption { margin-top: 2px; font-size: .5rem; }
   .hero-bottom-bar .hero-quote__nav { display: none; }
 }
+
+/* 1.8.7: clean Wealth of Yoga-style quote overlay without a dark panel. */
+.home .hero-bottom-bar .hero-quote {
+  padding: 0;
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  text-shadow: 0 2px 12px rgba(0,0,0,.62);
+}
+.home .hero-bottom-bar .hero-quote__label {
+  display: block;
+  margin: 0 0 7px;
+  color: #fff;
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .2em;
+}
+.home .hero-bottom-bar .hero-quote__nav {
+  color: rgba(255,255,255,.88);
+  text-shadow: 0 1px 8px rgba(0,0,0,.72);
+}
+@media (max-width:900px) {
+  .home .hero-bottom-bar .hero-quote {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  .home .hero-bottom-bar .hero-quote__label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: .5rem;
+  }
+}

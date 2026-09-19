@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 
-define('TRAVEL_RIDDLE_VERSION', '1.8.6');
+define('TRAVEL_RIDDLE_VERSION', '1.8.7');
 
 function travel_riddle_setup(): void {
     load_theme_textdomain('travel-riddle', get_template_directory() . '/languages');
