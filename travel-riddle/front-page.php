@@ -3,8 +3,8 @@ $travel_quotes = [
 ['Travel Brings Power And Love Back into Your Life.','Rumi'],['Of All The Books In The World The Best Stories Are Found Between The Pages of a Passport.','Anonymous'],['Travel Expands Your Brain',''],['The Travel Brings out The Best in You.',''],['The World Is a Book, And Those Who Do Not Travel Read Only One Page.','St. Augustine'],['Investment In Travel Is An Investment In Yourself.','Matthew Karsten'],['Fill Your Life With Adventures, Not Things. Have Stories To Tell, Not Things To Show.','Anonymous'],['Anyone Who Needs More Than One Suitcase Is a Tourist, Not a Traveller.','Eva Levin'],['Travel Teaches Tolerance','Benjamin Disraeli'],['Life Is Not Meant To Be Lived In One Place.',''],['One Must Travel To Learn.','Mark Twain'],['See the World. It’s More Fantastic than Any Dream.','Ray Bradbury'],['Always Say Yes To New Adventures.',''],['A Traveler Without Observation Is a Bird Without Wings.','Moslih Eddin Saadi']]; ?>
 <section class="hero hero--editorial">
   <div class="hero__videos" aria-hidden="true">
-    <?php foreach (array_merge(range(1, 14), [16, 17]) as $index => $number) : ?>
-      <?php $video_file = 9 === $number ? 'hero-9-web-v3.mp4' : 'hero-' . $number . '-web.mp4'; ?>
+    <?php foreach (array_merge(range(1, 8), range(10, 14), [16, 17]) as $index => $number) : ?>
+      <?php $video_file = 6 === $number ? 'hero-6-web-v2.mp4' : 'hero-' . $number . '-web.mp4'; ?>
       <video class="hero__video<?php echo 0 === $index ? ' is-active' : ''; ?>" <?php echo 0 === $index ? 'autoplay' : ''; ?> muted playsinline webkit-playsinline preload="<?php echo 0 === $index ? 'auto' : 'none'; ?>" poster="<?php echo esc_url(get_template_directory_uri() . '/assets/images/hero-poster-' . $number . '.webp'); ?>"><source src="<?php echo esc_url(get_template_directory_uri() . '/assets/video/' . $video_file); ?>" type="video/mp4"></video>
     <?php endforeach; ?>
   </div>
